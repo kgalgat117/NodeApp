@@ -1,0 +1,18 @@
+<% include partials/header %>
+    <main role="main" class="container">
+
+        <div class="starter-template">
+            <h1>All Tenents </h1>
+            <p class="lead">
+                <% tenents.forEach(function(ten){ %>
+                    <li>
+                        <a href="/view/<%=ten.name%>"><%= ten.name %></a>
+                    </li>
+                    <% }); %>
+            </p>
+        </div>
+
+    </main>
+    <!-- /.container -->
+
+    <% include partials/footer %>

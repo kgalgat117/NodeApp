@@ -1,0 +1,85 @@
+<% include partials/header %>
+
+    <div class="container">
+        <form action="/register" method="post" enctype="multipart/form-data">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="name">First Name</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="First Name">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="image">Upload Image</label>
+                    <input type="file" class="form-control" id="image" name="image">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputAddress">Address as on Adhaar Card</label>
+                <input type="text" class="form-control" id="inputAddress" name="address" placeholder="1234 Main St">
+            </div>
+            <div class="form-group">
+                <label for="roomalloted">Room/Shop Alloted</label>
+                <input type="text" class="form-control" id="roomalloted" name="roomalloted" placeholder="Apartment, studio, or floor">
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="inputCity">Mobile</label>
+                    <input type="number" class="form-control" name="mobile" id="mobile">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="adhaar">Adhaar Card Number</label>
+                    <input type="number" class="form-control" name="adhaar" id="adhaar">
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="rent">Rent</label>
+                    <input type="number" class="form-control" name="rent" id="rent">
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="sdate">Start Date</label>
+                    <input type="date" class="form-control" name="sdate" id="sdate">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="sread">Starting Reading</label>
+                    <input type="number" class="form-control" name="sread" id="sread">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="adv">Advance Deposite</label>
+                    <input type="number" class="form-control" name="adv" id="adv">
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="mem">Members</label>
+                    <input type="number" class="form-control" name="mem" id="mem">
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="erate">E-Rate</label>
+                    <input type="number" class="form-control" name="erate" id="erate">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="type" id="shop" value="shop">
+                        <label class="form-check-label" for="inlineRadio1">Shop</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="type" id="room" value="room">
+                        <label class="form-check-label" for="inlineRadio2">Room</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="status" id="true" value="true">
+                        <label class="form-check-label" for="inlineRadio1">Active</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="status" id="false" value="false">
+                        <label class="form-check-label" for="inlineRadio2">Inactive</label>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    <% include partials/footer %>

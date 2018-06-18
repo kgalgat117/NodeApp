@@ -1,0 +1,96 @@
+<% include partials/header %>
+    <div class="container-fluid">
+        <div class="container-fluid">
+           <div class="row align-items-start">
+            <div class="col-md-3">
+               <% var fd = new Date(news[0].start); var tdepo=0, tunit=0; %>
+                <h3>Name: <%= news[0].name %> </h3>
+                <h3> Rent: <%= news[0].rent %> </h3>
+                 
+                <h3>Alloted: <%= news[0].alloted %> </h3>
+                </div>
+                <div class="col-md-3">
+                <h3>Mobile: <%= news[0].mobile %></h3>
+                <h3>Advance: <%= news[0].advance %> </h3>
+                <h3>E-Rate: <%= news[0].erate %> </h3>
+                </div>
+               <div class="col-md-3">
+                <h3>First Reading: <%= news[0].sreading %> </h3>
+                <% depos.forEach(function(dee){ tdepo = tdepo + dee.recieved });  %>
+                <h3>Started: <%= fd.getDate() + "-" + (fd.getMonth() + 1) + "-" + fd.getFullYear() %> </h3> 
+                <% for(var k=0; k< reads.length; k++){ tunit = reads[reads.length-1].reading - reads[0].reading }%>
+                <h3>Total Deposite: <%= tdepo %></h3>
+            </div>
+            <div class="col-md-3">
+               <% if(news[0].status == true){ %>
+                <h3>Rent: <% var rent = (dm(Date.now(), fd) * news[0].rent) %> <%= rent %> </h3>
+                <% } else { %>
+                        <h3>Rent: <% var rent = (dm(new Date(news[0].end), fd) * news[0].rent) %> <%= rent %> </h3>
+                    <% } %>
+                <h3>Electricity: <%= tunit * news[0].erate %> </h3>
+                <h3>Balance: <%= (rent - tdepo) + (tunit * news[0].erate) %> </h3>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <table class="table table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">S.No.</th>
+<!--                            <th scope="col">Name</th>-->
+                            <th scope="col">Deposite</th>
+                            <th scope="col">Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                       <% var d=1; depos.forEach(function(dep){ var da = new Date(dep.depdate) %>                
+                        <tr>
+                            <td><%= d %></td>
+<!--                            <td><%= //dep.name %></td>-->
+                            <td><%= dep.recieved %></td>
+                            <td><%= da.getDate() + "-" + (da.getMonth() + 1) + "-" + da.getFullYear() %></td>
+                        </tr>
+                        <% d++; }); %>    
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-6">
+                <table class="table table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">S.No.</th>
+<!--                            <th scope="col">Name</th>-->
+                            <th scope="col">Current Reading</th>
+                            <th scope="col">Previous Reading</th>
+                            <th scope="col">Unit</th>
+                            <th scope="col">Amount</th>
+                            <th scope="col">Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                       <% for(var i=0; i< reads.length; i++){ var d = new Date(reads[i].readdate); %>                
+                        <tr>
+                            <td><%= (i+1) %></td>
+<!--                            <td><%=// reads[i].name %></td>-->
+                            <td><%=  reads[i].reading %></td>
+                            <% if(i==0){ %>
+                                <td> 0 </td>
+                                <td> 0 </td>
+                                <td> 0 </td>
+                            <% } else { %>
+                                <td><%=  reads[i-1].reading %></td>
+                                <td><%= ( reads[i].reading - reads[i-1].reading ) %></td>
+                                <td><%= ( reads[i].reading - reads[i-1].reading ) * news[0].erate %></td>
+                            <% } %>
+                            <td><%= d.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear() %></td>
+                        </tr>
+                        <% } %>    
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+
+    <% include partials/footer %>
